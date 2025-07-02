@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "main": "build/server.ts",
   "scripts": {
-    "build": "tsc -w",
+    "build": "tsc",
     "dev": "tsc-watch --onSuccess \"nodemon build/server.js\"",
     "start": "node build/server.js"
   },
