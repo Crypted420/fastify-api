@@ -1,6 +1,5 @@
 import fastify, { FastifyInstance } from "fastify"
 import mongoose from "mongoose";
-import authenticate from "./middleware/auth.middleware";
 require("dotenv").config();
 import AutoLoad, { AutoloadPluginOptions } from '@fastify/autoload';
 import { join } from 'path';
