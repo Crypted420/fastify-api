@@ -1,11 +1,11 @@
 {
   "name": "fastify-api",
   "version": "1.0.0",
-  "main": "server.ts",
+  "main": "app.ts",
   "scripts": {
     "build": "tsc",
-    "start": "node dist/server.js",
-    "dev": "nodemon --watch src src/server.ts"
+    "start": "node dist/app.js",
+    "dev": "nodemon --watch src src/app.ts"
   },
   "keywords": [],
   "author": "",
