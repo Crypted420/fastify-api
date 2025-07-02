@@ -4,7 +4,7 @@ require("dotenv").config();
 import AutoLoad, { AutoloadPluginOptions } from '@fastify/autoload';
 import { join } from 'path';
 
-const PORT = process.env.PORT || 3000;
+const PORT: number = Number(process.env.PORT || 3000);
 
 const app: FastifyInstance = fastify({
   logger: true,
@@ -34,7 +34,7 @@ app.register(AutoLoad, {
   },
 });
 
-app.listen({ host: '::', port: Number(process.env.PORT) || 3000 }, function (err, address) {
+app.listen({ host: '::', port: PORT }, function (err, address) {
   if (err) {
     app.log.error(err)
     process.exit(1)
