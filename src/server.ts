@@ -2,13 +2,14 @@ import { fastify, FastifyInstance } from "fastify";
 import {indexRoute} from "./routes/index.route";
 import mongoose from "mongoose";
 import authenticate from "./middleware/auth.middleware";
+require("dotenv").config();
 const PORT = process.env.PORT || 3000;
 
 const server: FastifyInstance = fastify({
   logger: true,
 });
 
-mongoose.connect("mongodb://localhost:27017/fastify-api",);
+mongoose.connect(process.env.MONGO_URI as string);
 
 mongoose.connection.on("error", (err) => {
   console.error("MongoDB connection error:", err);

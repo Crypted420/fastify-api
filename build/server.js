@@ -16,11 +16,12 @@ const fastify_1 = require("fastify");
 const index_route_1 = require("./routes/index.route");
 const mongoose_1 = __importDefault(require("mongoose"));
 const auth_middleware_1 = __importDefault(require("./middleware/auth.middleware"));
+require("dotenv").config();
 const PORT = process.env.PORT || 3000;
 const server = (0, fastify_1.fastify)({
     logger: true,
 });
-mongoose_1.default.connect("mongodb://localhost:27017/fastify-api");
+mongoose_1.default.connect(process.env.MONGO_URI);
 mongoose_1.default.connection.on("error", (err) => {
     console.error("MongoDB connection error:", err);
 });
