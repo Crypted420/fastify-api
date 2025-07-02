@@ -1,5 +1,4 @@
-import fastify, { FastifyInstance } from "fastify";
-import {indexRoute} from "./routes/index.route";
+import fastify, { FastifyInstance } from "fastify"
 import mongoose from "mongoose";
 import authenticate from "./middleware/auth.middleware";
 require("dotenv").config();
@@ -24,19 +23,17 @@ mongoose.connection.on("connected", () => {
 const pluginOptions: Partial<AutoloadPluginOptions> = {
   // Place your custom options the autoload plugin below here.
 }
-
-// app.register(AutoLoad, {
-//   dir: join(__dirname, 'plugins'),
-//   options: pluginOptions
-// });
-
 app.register(AutoLoad, {
-  dir: join(__dirname, 'routes'),
+  dir: join(__dirname, 'plugins'),
   options: pluginOptions
 });
 
-app.register(indexRoute,  {prefix: "/api/v1"});
-app.addHook("preHandler", authenticate);
+app.register(AutoLoad, {
+  dir: join(__dirname, 'routes'),
+  options: {
+    prefix: '/api/v1',
+  },
+});
 
 const start = async () => {
   try {
