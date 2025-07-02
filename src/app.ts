@@ -34,13 +34,9 @@ app.register(AutoLoad, {
   },
 });
 
-const start = async () => {
-  try {
-    await app.listen({port: PORT as number});
-  } catch (err) {
-    console.error(err);
-    process.exit(1);
+app.listen({ host: '::', port: Number(process.env.PORT) || 3000 }, function (err, address) {
+  if (err) {
+    app.log.error(err)
+    process.exit(1)
   }
-};
-
-start();
+});
